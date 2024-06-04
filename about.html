@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1; 
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.5);
+            color: white;
+        }
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; 
+            background-color: #4a90e2; 
+        }
+        .shape {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            animation: fall 5s linear infinite; 
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-50px) rotate(0deg);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <script>
+        const navLinks = document.querySelectorAll('nav a');
+
+        function setActiveLink(link) {
+            navLinks.forEach(link => link.classList.remove('active'));
+            link.classList.add('active');
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                setActiveLink(this);
+            });
+        });
+
+        document.querySelector('nav a[href="about.html"]').classList.add('active');
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const background = document.querySelector('.background');
+            for (let i = 0; i < 250; i++) {
+                const shape = document.createElement('div');
+                shape.classList.add('shape');
+                shape.style.left = `${Math.random() * 100}vw`; 
+                shape.style.animationDuration = `${Math.random() * 2 + 1}s`; 
+                background.appendChild(shape);
+            }
+        });
+    </script>
+    <h1>About Us</h1>
+    <p>This is the about page.</p>
+</body>
+</html>
