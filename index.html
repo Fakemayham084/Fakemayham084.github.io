@@ -84,12 +84,14 @@
             }
 
             const background = document.querySelector('.background');
-            for (let i = 0; i < 250; i++) { // Adjust the number of shapes as needed
-                const shape = document.createElement('div');
-                shape.classList.add('shape');
-                shape.style.left = `${Math.random() * 100}vw`; // Random horizontal position
-                shape.style.animationDuration = `${Math.random() * 2 + 1}s`; // Random animation duration
-                background.appendChild(shape);
+            if (background) {
+                for (let i = 0; i < 250; i++) { // Adjust the number of shapes as needed
+                    const shape = document.createElement('div');
+                    shape.classList.add('shape');
+                    shape.style.left = `${Math.random() * 100}vw`; // Random horizontal position
+                    shape.style.animationDuration = `${Math.random() * 2 + 1}s`; // Random animation duration
+                    background.appendChild(shape);
+                }
             }
         });
     </script>
